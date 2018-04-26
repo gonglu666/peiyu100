@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="/home/work/log/miui-ad-ecom-diagnosis-service/miui-ad-ecom-diagnosis-service.log" />
+        <param name="DatePattern" value=".yyyyMMdd" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%-5p %d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %l [%m]%n" />
+        </layout>
+    </appender>
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <param name="threshold" value="info" />
+        <param name="target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %d [%t][%F:%L] : %m%n" />
+        </layout>
+    </appender>
+    <logger name="com.xiaomi" additivity="false">
+        <level value="${log4j_level}" />
+        <appender-ref ref="file" />
+    </logger>
+    <logger name="com.ibatis" additivity="false">
+        <level value="${log4j_level}" />
+        <appender-ref ref="file" />
+    </logger>
+    <logger name="net.sf.json" additivity="false">
+        <level value="error" />
+        <appender-ref ref="file" />
+    </logger>
+    <logger name="org.apache.commons" additivity="false">
+        <level value="error" />
+        <appender-ref ref="file" />
+    </logger>
+    <logger name="org.springframework" additivity="false">
+        <level value="error" />
+        <appender-ref ref="file" />
+    </logger>
+
+
+
+</log4j:configuration>
